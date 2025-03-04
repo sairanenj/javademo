@@ -8,20 +8,7 @@
 </head>
 
 <body>
-  <nav>
-    <div class="logo">
-      <img src="/images/PAAlogo.png" alt="Logo" style="max-width: 100%; height: auto;">
-    </div>
-    <ul>
-      <li><a href="/" th:href="@{/}">HOME</a></li>
-      <li><a href="/client" th:href="@{/client}">CLIENTS</a></li>
-      <li><a href="/location" th:href="@{/location}">LOCATIONS</a></li>
-      <li><a href="/games" th:href="@{/games}">GAMES</a></li>
-      <li><a href="/gameassistant" th:href="@{/gameassistant}">GAMEASSISTANT</a></li>
-      <li><a href="/homegames" th:href="@{/homegames}">HOMEGAMES</a></li>
-      <li><a href="/user" th:href="@{/user}">USERS</a></li>
-    </ul>
-  </nav>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
   <div class="content">
     <h1>Welcome to the PELIAPURIAPPI</h1>
     <p>- This app is in beta testing</p>

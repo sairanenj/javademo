@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Clients</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div class="content">
+    <h1>LOCATIONS</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Location</th>
+          <th>Post Office</th>
+          <th>Postal Code</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="location : ${locations}">
+          <td th:text="${location.id}">ID</td>
+          <td th:text="${location.place}">ID</td>
+          <td th:text="${location.postOffice}">ID</td>
+          <td th:text="${location.postalCode}">ID</td>
+          <td th:text="${location.placeInfo}">ID</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
