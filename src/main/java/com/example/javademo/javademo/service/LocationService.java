@@ -17,4 +17,25 @@ public class LocationService {
   public List<Location> getAllLocations() {
     return locationRepository.findAll();
   }
+  
+  public Location getLocationById(int id) {
+    return locationRepository.findById(id).orElse(null);
+  }
+
+  public void saveLocation(Location location) {
+    locationRepository.save(location);
+  }
+
+  public void updateLocation(Location location) {
+    locationRepository.save(location);
+  }
+
+  public boolean deleteLocation(int id) {
+    Location location = locationRepository.findById(id).orElse(null);
+    if (location != null && (location.getClients() == null || location.getClients().isEmpty())) {
+      locationRepository.deleteById(id);
+      return true;
+    }
+    return false;
+  }
 }

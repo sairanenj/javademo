@@ -2,15 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>Clients</title>
+  <title>Locations</title>
   <link rel="stylesheet" href="/css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Unispace&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
   <div th:replace="~{fragments/navbar :: navbar}"></div>
   <div class="content">
     <h1>LOCATIONS</h1>
+    <div class="action-buttons">
+      <a title="Add New Location" th:href="@{/location/add}">
+        <i class="fas fa-plus add-icon"></i>
+      </a>
+      <p style="font-style: italic;"><b>Add new</b></p>
+    </div>
+    <div th:if="${error}" class="error message">
+      <p style="color:red" th:text="${error}"></p>
+    </div>
     <table>
       <thead>
         <tr>
@@ -19,6 +28,7 @@
           <th>Post Office</th>
           <th>Postal Code</th>
           <th>Notes</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +38,18 @@
           <td th:text="${location.postOffice}">ID</td>
           <td th:text="${location.postalCode}">ID</td>
           <td th:text="${location.placeInfo}">ID</td>
+          <td class="action-buttons">
+            <a title="Edit" th:href="@{/location/edit/{id}(id=${location.id})}">
+              <i class="fas fa-edit edit-icon"></i>
+            </a>
+            <form th:action="@{/location/delete/{id}(id=${location.id})}" method="post"
+              th:onsubmit="return confirm('Do you really want to delete this location?');">
+              <button type="submit" class="delete-button"
+                style="background: none; border: none; cursor: pointer; padding: 0;" title="Delete">
+                <i class="fas fa-trash-alt delete-icon"></i>
+              </button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>

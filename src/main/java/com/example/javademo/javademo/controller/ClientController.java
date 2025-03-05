@@ -37,6 +37,21 @@ public class ClientController {
     return "client";
   }
 
+  @GetMapping("/client/add")
+  public String addClient(Model model) {
+    Client client = new Client();
+    List<Location> locations = locationService.getAllLocations();
+    model.addAttribute("client", client);
+    model.addAttribute("locations", locations);
+    return "clientAdd";
+  }
+
+  @PostMapping("/client/save")
+  public String saveClient(@ModelAttribute Client client) {
+    clientService.SaveClient(client);
+    return "redirect:/client";
+  }
+
   @GetMapping("/client/edit/{id}")
   public String editClient(@PathVariable int id, Model model) {
     Client client = clientService.getClientById(id);
@@ -49,6 +64,12 @@ public class ClientController {
   @PostMapping("/client/update")
   public String updateClient(@ModelAttribute Client client) {
     clientService.updateClient(client);
+    return "redirect:/client";
+  }
+
+  @PostMapping("/client/delete/{id}")
+  public String deleteClient(@PathVariable int id) {
+    clientService.deleteClient(id);
     return "redirect:/client";
   }
 }

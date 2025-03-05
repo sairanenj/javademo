@@ -1,6 +1,6 @@
 /* General template styles */
 body {
-  font-family: 'Unispace', monospace;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
@@ -123,15 +123,57 @@ table tr:hover {
   background-color: #f1f1f1;
 }
 
-/* Icon styling */
-.edit-icon {
+/* Icon/button styling */
+.edit-icon, .delete-icon, .add-icon {
   color: black;
   font-size: 2em;
   transition: 0.3s;
+  vertical-align: middle;
 }
 
 .edit-icon:hover {
   color: orange;
+}
+
+.delete-icon:hover {
+  color: red;
+}
+
+.add-icon:hover {
+  color: green;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.a-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2c2c2c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
+}
+
+.a-button:hover {
+  background-color: orange;
 }
 
 /* Form-group styling for editing inputs etc */
@@ -154,7 +196,6 @@ table tr:hover {
   border: 2px solid #2c2c2c;
   border-radius: 5px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-  font-family: 'Unispace', sans-serif;
   font-size: 16px;
   color: #333;
 }
@@ -171,8 +212,9 @@ table tr:hover {
   color: white;
   border: none;
   border-radius: 5px;
-  font-family: 'Unispace', sans-serif;
   font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
   cursor: pointer;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
