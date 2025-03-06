@@ -1,18 +1,11 @@
 package com.example.javademo.javademo.entity;
 
-import java.util.List;
-import java.util.UUID;
-
+import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "games")
@@ -37,14 +30,6 @@ public class Games {
   private List<Gameassistant> gameassistants;
 
   public Games() {
-  }
-  
-  public Games(UUID id, String gameName, String gameDetails, byte[] data, List<Gameassistant> gameassistants) {
-    this.id = id;
-    this.gameName = gameName;
-    this.gameDetails = gameDetails;
-    this.data = data;
-    this.gameassistants = gameassistants;
   }
 
   public UUID getId() {

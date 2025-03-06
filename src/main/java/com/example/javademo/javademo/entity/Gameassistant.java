@@ -19,11 +19,8 @@ public class Gameassistant {
   @Column(name = "inUse")
   private boolean inUse;
 
-  @Column(name = "thumbsUp")
-  private boolean thumbsUp;
-
-  @Column(name = "thumbsDown")
-  private boolean thumbsDown;
+  @Column(name = "thumbs")
+  private boolean thumbs;
 
   @Column(name = "notes")
   private String notes;
@@ -39,12 +36,11 @@ public class Gameassistant {
   public Gameassistant() {
   }
 
-  public Gameassistant(int id, boolean inUse, boolean thumbsUp, boolean thumbsDown, String notes, Client client,
+  public Gameassistant(int id, boolean inUse, boolean thumbs, String notes, Client client,
       Games games) {
     this.id = id;
     this.inUse = inUse;
-    this.thumbsUp = thumbsUp;
-    this.thumbsDown = thumbsDown;
+    this.thumbs = thumbs;
     this.notes = notes;
     this.client = client;
     this.games = games;
@@ -58,20 +54,12 @@ public class Gameassistant {
     this.inUse = inUse;
   }
 
-  public boolean isThumbsUp() {
-    return thumbsUp;
+  public boolean isThumbs() {
+    return thumbs;
   }
 
-  public void setThumbsUp(boolean thumbsUp) {
-    this.thumbsUp = thumbsUp;
-  }
-
-  public boolean isThumbsDown() {
-    return thumbsDown;
-  }
-
-  public void setThumbsDown(boolean thumbsDown) {
-    this.thumbsDown = thumbsDown;
+  public void setThumbs(boolean thumbs) {
+    this.thumbs = thumbs;
   }
 
   public String getNotes() {

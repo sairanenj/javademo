@@ -2,6 +2,7 @@ package com.example.javademo.javademo.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,8 +36,7 @@ public class Client {
   @ManyToOne
   private Location location;
 
-  // Clients can join multiple gameassistants
-  @OneToMany(mappedBy = "client")
+  @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Gameassistant> gameassistants;
 
   // Clients can join multiple homegames

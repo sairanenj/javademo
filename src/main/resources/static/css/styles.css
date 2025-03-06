@@ -131,6 +131,27 @@ table tr:hover {
   vertical-align: middle;
 }
 
+.delete-button2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.delete-icon2 {
+  color: orange;
+  font-size: 2em;
+  transition: 0.3s;
+  vertical-align: middle;
+}
+
+.delete-icon2:hover {
+  color: red;
+}
+
 .edit-icon:hover {
   color: orange;
 }
@@ -221,4 +242,84 @@ table tr:hover {
 
 .form-group button:hover {
   background-color: orange;
+}
+
+/* Gamescard styling */
+.card {
+  position: relative;
+  border: 2px solid orange;
+  border-radius: 5px;
+  background-color: #2c2c2c;
+  padding: 15px;
+  margin: 15px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+  word-wrap: break-word;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  padding: 10px;
+  color: orange;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid orange;
+  font-weight: bold;
+  font-style: italic;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 4px #ff6600;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card p {
+  color: orange;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid orange;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Gameassistant thumbs up/down styling */
+
+.yes {
+  font-weight: bold;
+  color: green;
+}
+
+.no {
+  font-weight: bold;
+  color: red;
+}
+
+.thumbs-up {
+  color: green;
+  font-size: 2em;
+}
+
+.thumbs-down {
+  color: red;
+  font-size: 2em;
+}
+
+/* Gameassistant small image styling */
+.game-image {
+  width: 50px;
+  height: auto;
+  vertical-align: middle;
+  margin-left: 5px;
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Gameassistant</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div class="content">
+    <h1>GAMEASSISTANT</h1>
+    <p>Here you can add game-specific information for your customers. Is a game in use, whether it worked well, and free space for notes.</p>
+    <p style="font-style: italic">(Clients' gameassistant data will be deleted when you delete the client.)</p>
+    <div class="action-buttons">
+      <a title="Add New Notes" th:href="@{/gameassistant/add}">
+        <i class="fas fa-plus add-icon"></i>
+      </a>
+      <p style="font-style: italic;"><b>Add new</b></p>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Game</th>
+          <th>In Use</th>
+          <th>Good?</th>
+          <th>Notes</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="gameassistant : ${gameassistants}">
+          <td th:text="${gameassistant.client.firstName} + ' ' + ${gameassistant.client.lastName}">Client</td>
+          <td>
+            <span th:text="${gameassistant.games.gameName}">Game</span>
+            <img th:src="@{'/games/image/' + ${gameassistant.games.id}}" alt="Game Image" class="game-image">
+          </td>
+          <td th:classappend="${gameassistant.inUse} ? 'yes' : 'no'" th:text="${gameassistant.inUse} ? 'YES' : 'NO'">In
+            Use</td>
+          <td>
+            <i
+              th:classappend="${gameassistant.thumbs} ? 'fas fa-thumbs-up thumbs-up' : 'fas fa-thumbs-down thumbs-down'"></i>
+          </td>
+          <td th:text="${gameassistant.notes}">Notes</td>
+          <td class="action-buttons">
+            <a title="Edit" th:href="@{/gameassistant/edit/{id}(id=${gameassistant.id})}">
+              <i class="fas fa-edit edit-icon"></i>
+            </a>
+            <form th:action="@{/gameassistant/delete/{id}(id=${gameassistant.id})}" method="post" th:onsubmit="return confirm('Do you really want to delete this game assistant?');">
+              <button type="submit" class="delete-button" title="Delete">
+                <i class="fas fa-trash-alt delete-icon"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

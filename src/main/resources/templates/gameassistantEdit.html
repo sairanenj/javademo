@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Edit Gameassistant</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div class="content">
+    <h1>Edit Gameassistant</h1>
+    <p>Edit notes for <b><span th:text="${gameassistant.client.firstName} + ' ' + ${gameassistant.client.lastName}"></span> (<span th:text="${gameassistant.games.gameName}"></span>)</b></p>
+    <form th:action="@{/gameassistant/update}" method="post">
+      <input type="hidden" id="id" name="id" th:value="${gameassistant.id}" />
+      <div class="form-group">
+        <label for="inUse">In Use:</label>
+        <select id="inUse" name="inUse" required>
+          <option th:value="true" th:selected="${gameassistant.inUse}">YES</option>
+          <option th:value="false" th:selected="${!gameassistant.inUse}">NO</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="thumbs">Good?</label>
+        <select id="thumbs" name="thumbs" required>
+          <option th:value="true" th:selected="${gameassistant.thumbs}">YES</option>
+          <option th:value="false" th:selected="${!gameassistant.thumbs}">NO</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="notes">Notes:</label>
+        <input type="text" id="notes" name="notes" maxlength="255" th:value="${gameassistant.notes}" required />
+      </div>
+      <div class="form-group">
+        <button type="submit">SAVE</button>
+        <a href="/gameassistant" class="a-button">CANCEL</a>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

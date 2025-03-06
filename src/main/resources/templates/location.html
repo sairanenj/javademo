@@ -11,6 +11,7 @@
   <div th:replace="~{fragments/navbar :: navbar}"></div>
   <div class="content">
     <h1>LOCATIONS</h1>
+    <p>A list of your potential working places. The locations are linked to clients. (No client without location!)</p>
     <div class="action-buttons">
       <a title="Add New Location" th:href="@{/location/add}">
         <i class="fas fa-plus add-icon"></i>
@@ -23,7 +24,6 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
           <th>Location</th>
           <th>Post Office</th>
           <th>Postal Code</th>
@@ -33,7 +33,6 @@
       </thead>
       <tbody>
         <tr th:each="location : ${locations}">
-          <td th:text="${location.id}">ID</td>
           <td th:text="${location.place}">ID</td>
           <td th:text="${location.postOffice}">ID</td>
           <td th:text="${location.postalCode}">ID</td>
