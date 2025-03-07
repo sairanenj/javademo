@@ -10,7 +10,7 @@
 <body>
   <div th:replace="~{fragments/navbar :: navbar}"></div>
   <div class="content">
-    <h1>Games List</h1>
+    <h1>GAME LIST</h1>
     <p>A list of company-owned board games that can be used to help with exercises.</p>
     <h3>Add new game to list:</h3>
     <form th:action="@{/games/save}" method="post" enctype="multipart/form-data">
@@ -48,6 +48,9 @@
       </div>
     </div>
   </div>
+  <footer>
+    (c) Jaska 2025
+  </footer>
 </body>
 
 </html>

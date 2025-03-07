@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Clients</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div class="content">
+    <h1>CLIENTS</h1>
+    <p>A list of clients. Clients are connected to other functions in the application.</p>
+    <div class="action-buttons">
+      <a title="Add New Client" th:href="@{/client/add}">
+        <i class="fas fa-plus add-icon"></i>
+      </a>
+      <p style="font-style: italic;"><b>Add new</b></p>
+    </div>
+    <div class="form-group">
+      <form th:action="@{/clients}" method="get">
+        <input type="text" name="keyword" placeholder="Search for any data in the list..." th:value="${keyword}">
+        <button style="margin-top: 10px" type="submit">Search</button>
+        <a href="/clients" class="a-button">Clear</a>
+      </form>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <a th:href="@{/clients(sortField='id', sortDir=${reverseSortDir}, keyword=${keyword})}"
+              class="sortable-column">
+              ID
+              <i th:if="${sortField == 'id' && sortDir == 'asc'}" class="fas fa-sort-up sort-icon"></i>
+              <i th:if="${sortField == 'id' && sortDir == 'desc'}" class="fas fa-sort-down sort-icon"></i>
+            </a>
+          </th>
+          <th>
+            <a th:href="@{/clients(sortField='firstName', sortDir=${reverseSortDir}, keyword=${keyword})}"
+              class="sortable-column">
+              First Name
+              <i th:if="${sortField == 'firstName' && sortDir == 'asc'}" class="fas fa-sort-up sort-icon"></i>
+              <i th:if="${sortField == 'firstName' && sortDir == 'desc'}" class="fas fa-sort-down sort-icon"></i>
+            </a>
+          </th>
+          <th>
+            <a th:href="@{/clients(sortField='lastName', sortDir=${reverseSortDir}, keyword=${keyword})}"
+              class="sortable-column">
+              Last Name
+              <i th:if="${sortField == 'lastName' && sortDir == 'asc'}" class="fas fa-sort-up sort-icon"></i>
+              <i th:if="${sortField == 'lastName' && sortDir == 'desc'}" class="fas fa-sort-down sort-icon"></i>
+            </a>
+          </th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>
+            <a th:href="@{/clients(sortField='location.place', sortDir=${reverseSortDir}, keyword=${keyword})}"
+              class="sortable-column">
+              Location
+              <i th:if="${sortField == 'location.place' && sortDir == 'asc'}" class="fas fa-sort-up sort-icon"></i>
+              <i th:if="${sortField == 'location.place' && sortDir == 'desc'}" class="fas fa-sort-down sort-icon"></i>
+            </a>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="client : ${clients}">
+          <td th:text="${client.id}">ID</td>
+          <td th:text="${client.firstName}">First Name</td>
+          <td th:text="${client.lastName}">Last Name</td>
+          <td th:text="${client.phone}">Phone</td>
+          <td th:text="${client.email}">Email</td>
+          <td th:text="${client.location.place}">Location</td>
+          <td class="action-buttons">
+            <a title="Edit" th:href="@{/client/edit/{id}(id=${client.id})}">
+              <i class="fas fa-edit edit-icon"></i>
+            </a>
+            <form th:action="@{/client/delete/{id}(id=${client.id})}" method="post"
+              th:onsubmit="return confirm('Do you really want to delete this client?');">
+              <button type="submit" class="delete-button"
+                style="background: none; border: none; cursor: pointer; padding: 0;" title="Delete">
+                <i class="fas fa-trash-alt delete-icon"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>
+    (c) Jaska 2025
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Edit Homegame</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div class="content">
+    <h1>Edit Homegame</h1>
+    <p>Editing homegames information for <b><span
+          th:text="${homegame.client.firstName} + ' ' + ${homegame.client.lastName}"></span></b></p>
+    <form th:action="@{/homegames/update}" method="post">
+      <input type="hidden" id="id" name="id" th:value="${homegame.id}" />
+      <div class="form-group">
+        <label for="gamesHome">Games Home:</label>
+        <input type="text" id="gamesHome" name="gamesHome" maxlength="255" th:value="${homegame.gamesHome}" required>
+      </div>
+      <div class="form-group">
+        <label for="gamesDaycare">Games Daycare:</label>
+        <input type="text" id="gamesDaycare" name="gamesDaycare" maxlength="255" th:value="${homegame.gamesDaycare}"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="homegamesInfo">Homegames Info:</label>
+        <input type="text" id="homegamesInfo" name="homegamesInfo" maxlength="255" th:value="${homegame.homegamesInfo}"
+          required>
+      </div>
+      <div class="form-group">
+        <button type="submit">SAVE</button>
+        <a href="/homegames" class="a-button">CANCEL</a>
+      </div>
+    </form>
+  </div>
+  <footer>
+    (c) Jaska 2025
+  </footer>
+</body>
+
+</html>

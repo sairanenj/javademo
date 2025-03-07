@@ -65,6 +65,39 @@ nav ul li a:hover {
   text-shadow: 2px 2px 4px #ff6600;
 }
 
+/* Navbar logout button styling */
+.logout-button {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid white;
+  font-weight: bold;
+  font-style: italic;
+  box-shadow: 0 3px 5px black;
+  text-shadow: 2px 2px 4px black;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+  font-style: italic;
+  width: 100%; /* Make the button wider */
+}
+
+.logout-button:hover {
+  background-color: white;
+  color: black;
+  text-shadow: 2px 2px 4px black;
+}
+
+.logout-container {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+}
+
 /* Page content styles */
 .content {
   margin-left: 200px;
@@ -121,6 +154,18 @@ table tr:nth-child(even) {
 
 table tr:hover {
   background-color: #f1f1f1;
+}
+
+/* Sortable column styling for clients */
+
+.sortable-column {
+  color: rgb(180, 81, 0);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sortable-column:hover {
+  text-decoration: underline;
 }
 
 /* Icon/button styling */
