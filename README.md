@@ -11,7 +11,7 @@ Java (Spring Boot/MVC/JPA/Security), MySQL, HTML/CSS, Thymeleaf
 
 A simple helper tool for language/speech therapists (LST). With the program you can keep basic information about clients and locations, which are of course connected to each other.
 
-The program has a separate section for games that are in use by you/your company. Games refer to board games that are used in speech therapy, etc. You can modify this list freely.
+The program has a separate section for games that are in use by you/your company. Games refer to board games that are used in speech therapy, etc. You can modify this list freely. (There are some premade gameimages in resources/static/images directory, good for testing this one)
 
 These games can then be linked to clients using the game assistant. Is the game used by the client, is the game functional and there is an opportunity for free comments.
 
