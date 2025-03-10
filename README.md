@@ -27,7 +27,7 @@ You should have:
 JDK 17 or later installed, MySQL Database/MySQL Server, Visual Studio Code, Maven
 
 Configure MySQL database:
-Create a databse named javademodb
+Create a database named javademodb
 Update application.properties file with your MySQL username and pw:
 spring.datasource.url=jdbc:mysql://localhost:3306/javademodb
 spring.datasource.username=<your-username>
@@ -52,3 +52,17 @@ You should rename it back to something else after that again, just incase (or ju
 That data displays you some idea behind the application.
 Obviously you can add and test everything yourself and findout if the application is even working.
 
+## Project Structure
+
+src/main/java/com/example/javademo/
+- controller: Spring MVC controllers that handle HTTP requests and responses
+- entity: JPA entities/database tables
+- repository: Spring Data JPA repositories for data access
+- service: Service classes that contain business logic
+- config: Configuration classes (security and other)
+- advice: Global exception handling classes
+src/main/resources/
+- static: Static resources (CSS, images)
+- templates: HTML/Thymeleaf templates for the views
+  - fragments: Thymeleaf fragments (navigation bar on this one)
+- application.properties: App config properties
