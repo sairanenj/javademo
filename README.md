@@ -1,13 +1,11 @@
 # Javademo (Peliapuriapp)
 
 I made this project for myself as a pure exercise in Java.
-Basically, the project is the same as the exercise I did for the university of applied sciences with Vaadin flow (VaadinPractice).
+Basically, the project is the same as the exercise I did for the university of applied sciences with Vaadin flow (VaadinPractice). I added a little more functionality and tools to this version.
 
 Main technologies used for this project:
 Visual Studio Code:
-Java (Spring Boot/MVC/JPA/Security)
-MySQL
-HTML/CSS, Thymeleaf
+Java (Spring Boot/MVC/JPA/Security), MySQL, HTML/CSS, Thymeleaf
 
 ## Briefly about the game assistant app:
 
