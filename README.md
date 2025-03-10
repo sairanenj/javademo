@@ -61,6 +61,7 @@ src/main/java/com/example/javademo/
 - service: Service classes that contain business logic
 - config: Configuration classes (security and other)
 - advice: Global exception handling classes
+
 src/main/resources/
 - static: Static resources (CSS, images)
 - templates: HTML/Thymeleaf templates for the views
