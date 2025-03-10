@@ -30,6 +30,7 @@ public class GameassistantController {
   @Autowired
   private GamesService gamesService;
 
+  // Get all gameassistants for main page
   @GetMapping("/gameassistant")
   public String getAllGameAssistants(Model model) {
     List<Gameassistant> gameassistants = gameassistantService.getAllGameAssistants();
@@ -37,6 +38,7 @@ public class GameassistantController {
     return "gameassistant";
   }
 
+  // Getting data for adding new gameassistant page
   @GetMapping("/gameassistant/add")
   public String addGameAssistant(Model model) {
     List<Client> clients = clientService.getAllClients();
@@ -47,6 +49,7 @@ public class GameassistantController {
     return "gameassistantAdd";
   }
 
+  // Save new gameassistant
   @PostMapping("/gameassistant/save")
   public String saveGameAssistant(@RequestParam("clientId") int clientId,
       @RequestParam("gameId") UUID gameId,
@@ -63,6 +66,7 @@ public class GameassistantController {
     return "redirect:/gameassistant";
   }
 
+  // Getting data for editing gameassistant page
   @GetMapping("/gameassistant/edit/{id}")
   public String editGameAssistant(@PathVariable int id, Model model) {
     Gameassistant gameassistant = gameassistantService.getGameAssistantById(id);
@@ -70,6 +74,7 @@ public class GameassistantController {
     return "gameassistantEdit";
   }
 
+  // Update gameassistant
   @PostMapping("/gameassistant/update")
   public String updateGameAssistant(@RequestParam("id") int id,
       @RequestParam("inUse") boolean inUse,
@@ -83,6 +88,7 @@ public class GameassistantController {
     return "redirect:/gameassistant";
   }
 
+  // Delete gameassistant
   @PostMapping("/gameassistant/delete/{id}")
   public String deleteGameAssistant(@PathVariable int id) {
     gameassistantService.deleteGameAssistant(id);

@@ -12,6 +12,9 @@
   <div class="content">
     <h1>GAME LIST</h1>
     <p>A list of company-owned board games that can be used to help with exercises.</p>
+    <p style="font-style: italic">When you delete a game, you also delete all gameassistant data associated with the
+      game.</p>
+    <p style="font-style: italic">(Not the client though)</p>
     <h3>Add new game to list:</h3>
     <form th:action="@{/games/save}" method="post" enctype="multipart/form-data">
       <div th:if="${error}" class="error-message">
@@ -35,9 +38,11 @@
       </div>
     </form>
 
+    <!-- Looping through games and displaying their details and images as "cards" -->
     <div>
       <div th:each="game : ${games}" class="card">
-        <form th:action="@{/games/delete/{id}(id=${game.id})}" method="post" th:onsubmit="return confirm('Delete this game from the list?');">
+        <form th:action="@{/games/delete/{id}(id=${game.id})}" method="post"
+          th:onsubmit="return confirm('Delete this game from the list?');">
           <button type="submit" class="delete-button2" title="Delete">
             <i class="fas fa-trash-alt delete-icon2"></i>
           </button>

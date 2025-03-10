@@ -26,11 +26,13 @@ public class ClientController {
   @Autowired
   private LocationService locationService;
 
+  // Mapping to home page
   @GetMapping("/")
   public String homePage() {
     return "home";
   }
 
+  // Get all clients (used for foreign key ones)
   @GetMapping("/client")
   public String getAllClients(Model model) {
     List<Client> clients = clientService.getAllClients();
@@ -38,6 +40,7 @@ public class ClientController {
     return "client";
   }
 
+  // Get all clients with sorting and keyword search
   @GetMapping("/clients")
   public String getAllClientsSort(Model model,
                               @RequestParam(value = "sortField", required = false, defaultValue = "id") String sortField,
@@ -52,6 +55,7 @@ public class ClientController {
     return "clients";
   }
 
+  // Getting data for adding new client page
   @GetMapping("/client/add")
   public String addClient(Model model) {
     Client client = new Client();
@@ -61,12 +65,14 @@ public class ClientController {
     return "clientAdd";
   }
 
+  // Save new client
   @PostMapping("/client/save")
   public String saveClient(@ModelAttribute Client client) {
     clientService.SaveClient(client);
     return "redirect:/clients";
   }
 
+  // Getting data for editing an existing client
   @GetMapping("/client/edit/{id}")
   public String editClient(@PathVariable int id, Model model) {
     Client client = clientService.getClientById(id);
@@ -76,12 +82,14 @@ public class ClientController {
     return "clientEdit";
   }
 
+  // Update an existing client
   @PostMapping("/client/update")
   public String updateClient(@ModelAttribute Client client) {
     clientService.updateClient(client);
     return "redirect:/clients";
   }
 
+  // Delete existing client
   @PostMapping("/client/delete/{id}")
   public String deleteClient(@PathVariable int id) {
     clientService.deleteClient(id);

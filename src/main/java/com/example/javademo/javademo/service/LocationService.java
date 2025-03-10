@@ -30,6 +30,7 @@ public class LocationService {
     locationRepository.save(location);
   }
 
+  // Delete by location ID. Checking if the location exists and has no associated clients. Returns false if cannot be deleted.
   public boolean deleteLocation(int id) {
     Location location = locationRepository.findById(id).orElse(null);
     if (location != null && (location.getClients() == null || location.getClients().isEmpty())) {

@@ -18,6 +18,7 @@
       </a>
       <p style="font-style: italic;"><b>Add new</b></p>
     </div>
+    <!-- Search form -->
     <div class="form-group">
       <form th:action="@{/clients}" method="get">
         <input type="text" name="keyword" placeholder="Search for any data in the list..." th:value="${keyword}">
@@ -28,6 +29,7 @@
     <table>
       <thead>
         <tr>
+          <!-- Sortable column headers -->
           <th>
             <a th:href="@{/clients(sortField='id', sortDir=${reverseSortDir}, keyword=${keyword})}"
               class="sortable-column">

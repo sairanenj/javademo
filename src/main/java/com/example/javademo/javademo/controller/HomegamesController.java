@@ -24,6 +24,7 @@ public class HomegamesController {
   @Autowired
   private ClientService clientService;
 
+  // Get all homegames
   @GetMapping("/homegames")
   public String getAllHomegames(Model model) {
     List<Homegames> homegames = homegamesService.getAllHomegames();
@@ -31,6 +32,7 @@ public class HomegamesController {
     return "homegames";
   }
 
+  // Adds new homegame
   @GetMapping("/homegames/add")
   public String addHomegame(Model model) {
     List<Client> clients = clientService.getAllClients();
@@ -39,6 +41,7 @@ public class HomegamesController {
     return "homegamesAdd";
   }
 
+  // Saves a new home game
   @PostMapping("/homegames/save")
   public String saveHomegame(@RequestParam("clientId") int clientId, @RequestParam("gamesHome") String gamesHome, @RequestParam("gamesDaycare") String gamesDaycare, @RequestParam("homegamesInfo") String homegamesInfo) {
     Homegames homegame = new Homegames();
@@ -50,6 +53,7 @@ public class HomegamesController {
     return "redirect:/homegames";
   }
 
+  // Get data for eiditing existing homegame
   @GetMapping("/homegames/edit/{id}")
   public String editHomegame(@PathVariable int id, Model model) {
     Homegames homegame = homegamesService.getHomegameById(id);
@@ -57,6 +61,7 @@ public class HomegamesController {
     return "homegamesEdit";
   }
 
+  // updates existing homegame
   @PostMapping("/homegames/update")
   public String updateHomegame(@RequestParam("id") int id, @RequestParam("gamesHome") String gamesHome, @RequestParam("gamesDaycare") String gamesDaycare, @RequestParam("homegamesInfo") String homegamesInfo) {
     Homegames homegame = homegamesService.getHomegameById(id);
@@ -67,6 +72,7 @@ public class HomegamesController {
     return "redirect:/homegames";
   }
 
+  // Deletes homegame
   @PostMapping("/homegames/delete/{id}")
   public String deleteHomegame(@PathVariable int id) {
     homegamesService.deleteHomegame(id);

@@ -12,11 +12,12 @@
   <div class="content">
     <h1>USERS</h1>
     <p>List of users of this Peliapuriappi.</p>
-    <div class="action-buttons">
+    <p style="font-style: italic">Only ADMIN can add new or delete users.</p>
+    <div class="action-buttons" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
       <a title="Add New User" th:href="@{/user/add}">
         <i class="fas fa-plus add-icon"></i>
       </a>
-      <p style="font-style: italic;"><b>Add new</b></p>
+      <p style="font-style: italic"><b>Add new</b></p>
     </div>
     <table>
       <thead>
@@ -28,6 +29,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Looping through users and their details and providing a delete button with admin/user conditions (only admin can delete, username user and admin cannot be deleted) -->
         <tr th:each="user : ${users}">
           <td th:text="${user.userName}">User Name</td>
           <td th:text="${user.role}">Role</td>
@@ -35,7 +37,7 @@
           <td class="action-buttons">
             <form th:action="@{/user/delete/{id}(id=${user.id})}" method="post"
               th:onsubmit="return confirm('Do you really want to delete this user?');">
-              <button type="submit" class="delete-button" title="Delete">
+              <button type="submit" class="delete-button" title="Delete" th:if="${#authorization.expression('hasRole(''ADMIN'')') and user.userName != 'user' and user.userName != 'admin'}">
                 <i class="fas fa-trash-alt delete-icon"></i>
               </button>
             </form>

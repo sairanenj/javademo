@@ -40,7 +40,7 @@ public class Client {
   private List<Gameassistant> gameassistants;
 
   // Clients can join multiple homegames
-  @OneToMany(mappedBy = "client")
+  @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Homegames> homegames;
 
   public Client() {

@@ -26,6 +26,7 @@ public class GamesController {
   @Autowired
   private GamesService gamesService;
 
+  // Getting all gamesdata for games page
   @GetMapping("/games")
   public String getAllGames(Model model) {
     List<Games> games = gamesService.getAllGames();
@@ -33,12 +34,14 @@ public class GamesController {
     return "games";
   }
 
+  // Adds new game
   @GetMapping("/games/add")
   public String addGame(Model model) {
     model.addAttribute("game", new Games());
     return "gameAdd";
   }
 
+  // Saving new game with rules
   @PostMapping("/games/save")
     public String saveGame(@RequestParam("gameName") String gameName,
                            @RequestParam("gameDetails") String gameDetails,
@@ -56,6 +59,7 @@ public class GamesController {
         return "redirect:/games";
     }
 
+  // Getting game image by id
   @GetMapping("/games/image/{id}")
   public ResponseEntity<byte[]> getImage(@PathVariable UUID id) {
     Games game = gamesService.getGameById(id);
@@ -67,6 +71,7 @@ public class GamesController {
     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
 
+  // Delete game by id
   @PostMapping("/games/delete/{id}")
   public String deleteGame(@PathVariable UUID id, RedirectAttributes redirectAttributes) {
     gamesService.deleteGame(id);

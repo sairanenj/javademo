@@ -6,6 +6,7 @@
 </head>
 
 <body>
+  <!-- Navigation bar fragment, used in all templates-->
   <nav th:fragment="navbar">
     <div class="logo">
       <img src="/images/PAAlogo.png" alt="Logo" style="max-width: 100%; height: auto;">
@@ -18,8 +19,10 @@
       <li><a href="/gameassistant" th:href="@{/gameassistant}">GAMEASSISTANT</a></li>
       <li><a href="/homegames" th:href="@{/homegames}">HOMEGAMES</a></li>
       <li><a href="/user" th:href="@{/user}">USERS</a></li>
+      <!-- Conditional login/logout links -->
       <li th:if="${#authentication == null}"><a th:href="@{/login}">LOGIN</a></li>
       <li th:if="${#authentication != null}" class="logout-container">
+        <p style="color: green">Logged in as: <span th:text="${#strings.substringAfter(#authentication.principal.authorities[0].authority, 'ROLE_')}"></span></p>
         <form th:action="@{/logout}" method="post" style="display: inline;">
           <button type="submit" class="logout-button">LOGOUT</button>
         </form>

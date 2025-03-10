@@ -9,16 +9,20 @@ import org.springframework.stereotype.Service;
 import com.example.javademo.javademo.entity.Client;
 import com.example.javademo.javademo.repository.ClientRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ClientService {
 
   @Autowired
   private ClientRepository clientRepository;
 
+  // Getting all clients (used for foreign key ones)
   public List<Client> getAllClients() {
     return clientRepository.findAll();
   }
 
+  // Get all clients with sorting and keyword search (main client page usage)
   public List<Client> getAllClientsSort(String sortField, String sortDir, String keyword) {
     Sort sort = Sort.by(Sort.Direction.fromString(sortDir), sortField);
     if (keyword != null && !keyword.isEmpty()) {
@@ -40,6 +44,7 @@ public class ClientService {
     clientRepository.save(client);
   }
 
+  @Transactional
   public void deleteClient(int id) {
     clientRepository.deleteById(id);
   }

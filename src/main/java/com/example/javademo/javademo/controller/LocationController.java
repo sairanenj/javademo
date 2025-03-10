@@ -19,6 +19,7 @@ public class LocationController {
   @Autowired
   private LocationService locationService;
 
+  // Getting all existing locations for main location page
   @GetMapping("/location")
   public String getAllLocations(Model model) {
     List<Location> locations = locationService.getAllLocations();
@@ -26,6 +27,7 @@ public class LocationController {
     return "location";
   }
   
+  // Preparing data for adding new location page
   @GetMapping("/location/add")
   public String addLocation (Model model) {
     Location location = new Location();
@@ -33,18 +35,21 @@ public class LocationController {
     return "locationAdd";
   }
 
+  // Saving new location
   @PostMapping("/location/save")
   public String saveLocation (@ModelAttribute Location location) {
     locationService.saveLocation(location);
     return "redirect:/location";
   }
 
+  // Updating existing location
   @PostMapping("/location/update")
   public String updateLocation(@ModelAttribute Location location) {
     locationService.updateLocation(location);
     return "redirect:/location";
   }
 
+  // Getting data for editing existing location
   @GetMapping("/location/edit/{id}")
   public String editLocation (@PathVariable int id, Model model) {
     Location location = locationService.getLocationById(id);
@@ -52,6 +57,7 @@ public class LocationController {
     return "locationEdit";
   }
 
+  // Deleting existing location
   @PostMapping("/location/delete/{id}")
   public String deleteLocation(@PathVariable int id, Model model) {
     boolean isDeleted = locationService.deleteLocation(id);

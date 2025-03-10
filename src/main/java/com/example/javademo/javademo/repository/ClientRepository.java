@@ -12,6 +12,7 @@ import com.example.javademo.javademo.entity.Client;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
+  // Custom query to find clients by keyword with sorting
   @Query("SELECT c FROM Client c WHERE " +
       "c.firstName LIKE %?1% OR " +
       "c.lastName LIKE %?1% OR " +

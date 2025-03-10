@@ -26,7 +26,7 @@ public class Games {
   private byte[] data;
 
   // Many gameassistants for one game
-  @OneToMany(mappedBy = "games")
+  @OneToMany(mappedBy = "games", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Gameassistant> gameassistants;
 
   public Games() {
